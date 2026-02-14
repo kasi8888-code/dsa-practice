@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void rotateMatrix(vector<vector<int>>& mat) {
+        int n = mat.size();
+        //Transpose
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                swap(mat[i][j], mat[j][i]);
+            }
+        }
+        //Reverse columns
+        for (int col = 0; col < n; col++) {
+            int top = 0, bottom = n - 1;
+            while (top < bottom) {
+                swap(mat[top][col], mat[bottom][col]);
+                top++;
+                bottom--;
+            }
+        }
+    }
+};
