@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+void find_youngest_member(int n, int m, int gifts[][2]) {
+    int gave[n + 1], received[n + 1];
+
+    // Step 1: Initialize arrays
+    for (int i = 1; i <= n; i++) {
+        gave[i] = 0;
+        received[i] = 0;
+    }
+
+    // Step 2: Count gifts given and received
+    for (int i = 0; i < m; i++) {
+        int giver = gifts[i][0];
+        int receiver = gifts[i][1];
+
+        gave[giver]++;
+        received[receiver]++;
+    }
+
+    // Step 3: Find the youngest member
+    for (int i = 1; i <= n; i++) {
+        if (received[i] == n - 1 && gave[i] == 0) {
+            printf("%d\n", i);
+            return;
+        }
+    }
+
+    printf("-1\n");
+}
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+
+    int gifts[m][2];
+    for (int i = 0; i < m; i++) {
+        scanf("%d %d", &gifts[i][0], &gifts[i][1]);
+    }
+
+    find_youngest_member(n, m, gifts);
+    return 0;
+}
