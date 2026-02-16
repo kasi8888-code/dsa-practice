@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+const char* determine_color(const char* s) {
+    char col = s[0];
+    int row = s[1] - '0';
+
+    
+    if (col == 'a' || col == 'c' || col == 'e' || col == 'g') {
+        if (row % 2 != 0)
+            return "Black";
+        else
+            return "White";
+    }
+    
+    else {
+        if (row % 2 != 0)
+            return "White";
+        else
+            return "Black";
+    }
+}
+
+int main() {
+    char s[10];
+    scanf("%s", s);
+
+    const char* result = determine_color(s);
+    printf("%s\n", result);
+
+    return 0;
+}
